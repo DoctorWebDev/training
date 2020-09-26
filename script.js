@@ -1,8 +1,7 @@
-
+'use strict';
 const element = document.createElement('div'),
       parent = document.querySelector('.parent'),
       url = 'https://api.chucknorris.io/jokes/random';
-
 
 class ChuckNoris  {
     constructor(icon, id, value) {
@@ -24,15 +23,14 @@ class ChuckNoris  {
     }
 }
 
-
-
 fetch(url)
   .then((response) => {
     return response.json();
   })
   .then((data) => {
     new ChuckNoris(data['icon_url'], data.id, data.value).render();
-  });
+  })
+  .catch(error => console.error(error));
 
 
 
